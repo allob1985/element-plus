@@ -66,10 +66,11 @@
             <el-icon
               v-if="showClear"
               :class="[nsInput.e('icon'), nsInput.e('clear')]"
+              :size="18"
               @mousedown.prevent="NOOP"
               @click="clear"
             >
-              <circle-close />
+              <Close />
             </el-icon>
             <el-icon
               v-if="showPwdVisible"
@@ -154,7 +155,7 @@ import { useResizeObserver } from '@vueuse/core'
 import { isNil } from 'lodash-unified'
 import { ElIcon } from '@element-plus/components/icon'
 import {
-  CircleClose,
+  Close,
   Hide as IconHide,
   View as IconView,
 } from '@element-plus/icons-vue'
@@ -274,8 +275,7 @@ const showClear = computed(
     props.clearable &&
     !inputDisabled.value &&
     !props.readonly &&
-    !!nativeInputValue.value &&
-    (focused.value || hovering.value)
+    !!nativeInputValue.value
 )
 const showPwdVisible = computed(
   () =>
